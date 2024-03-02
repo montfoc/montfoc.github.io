@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html data-ng-app="chWebsite">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
+    <!--link type="image/x-icon" href="../img/favicon.ico" rel="shortcut icon" /-->
+    <title class="ng-binding" data-ng-bind-template="{{title}}">Christian Amenós</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:400,100italic,100,300,300italic,400italic,500,500italic,700,700italic,900,900italic"
+    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <div class="opacity-layer hidden"></div>
+    <div id="main-nav">
+      <div id="header-bar">
+        <div id="menu-opener" class="cursor-pointer">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <div id="breadcrumb">Montfoc <span class="separator">-</span> <small>Home</small></div>
+      </div>
+      <nav>
+        <div id="menu-name">Montfoc</div>
+        <ul>
+          <li>
+            <a href="" class="active"><i class="zmdi zmdi-home"></i> Home</a>
+            <ul>
+              <li>
+                <a href="#about"><i class="zmdi zmdi-help"></i> About</a>
+              </li>
+              <li>
+                <a href="#projects"><i class="zmdi zmdi-apps"></i> Projects</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <header>
+      <h1 class="txt-center fadeInUp">Montfoc</h1>
+    </header>
+    <div id="content">
+      <article>
+        <header>
+          <h2 id="about"><i class="zmdi zmdi-help big"></i> About</h2>
+        </header>
+        <div>
+          <p>¡Welcome to Montfoc!</p>
+          <p>
+            We are a team passionate about thechnology that firmly believe on the idea that great ideas come to life
+            when shared with amazing people.
+          </p>
+          <p>
+            Making mobile applications is not just a hooby for us, it's also a way to keep learning and innovating. We
+            gather in our free time, fueled by our enthusiasm, to build from videogames to practical utilities combining
+            our diverse skills.
+          </p>
+          <p>
+            We build products with the idea to leave the world better than we found it, and with this principle in mind,
+            we create solutions that delight our customers and improve their lives.
+          </p>
+        </div>
+      </article>
+
+      <article>
+        <header>
+          <h2 id="projects"><i class="zmdi zmdi-apps big"></i> Projects</h2>
+        </header>
+        <div class="project" data-animation="fadeIn">
+          <h3>Code Review Checklist</h3>
+          <img src="img/code_review_checklist.png" alt="Logo of Code Review Checklist application" />
+          <p>Code Review Checklist is a companion App that help you reviewing code wrote by you and your teammates.</p>
+          <p>Available for: <a href="">Android</a></p>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      <div class="txt-center">
+        <div>Montfoc, 2024</div>
+      </div>
+    </footer>
+    <script type="text/javascript">
+      $("body").on("click", "#menu-opener", function () {
+        if ($("#main-nav").hasClass("openMenu")) {
+          $("#main-nav").removeClass("openMenu");
+          $("#main-nav").addClass("closeMenu");
+          $(".opacity-layer").removeClass("fadeInShort");
+          $(".opacity-layer").addClass("fadeOutShort");
+          setTimeout(function () {
+            $(".opacity-layer").addClass("hidden");
+          }, 500);
+        } else {
+          $("#main-nav").removeClass("closeMenu");
+          $("#main-nav").addClass("openMenu");
+          $(".opacity-layer").removeClass("hidden");
+          $(".opacity-layer").addClass("fadeInShort");
+          $(".opacity-layer").removeClass("fadeOutShort");
+        }
+      });
+
+      $("body").on("click", "#main-nav nav ul ul li", function (e) {
+        e.preventDefault();
+        $("html, body").animate(
+          {
+            scrollTop: $($(e.target).attr("href")).offset().top - 80,
+          },
+          500
+        );
+        $("#main-nav").removeClass("openMenu");
+        $("#main-nav").addClass("closeMenu");
+        $(".opacity-layer").removeClass("fadeInShort");
+        $(".opacity-layer").addClass("fadeOutShort");
+        setTimeout(function () {
+          $(".opacity-layer").addClass("hidden");
+        }, 500);
+      });
+
+      $(window).on("scroll", revealOnScroll);
+      function revealOnScroll() {
+        var scrolled = $(window).scrollTop();
+        $(".revealOnScroll:not(.animated)").each(function () {
+          var offsetTop = $(this).offset().top;
+          if ((scrolled + $(window).height()) * 0.98 > offsetTop) {
+            if ($(this).attr("data-timeout")) {
+              window.setTimeout(function () {
+                $(this).addClass("animated " + $(this).attr("data-animation"));
+              }, parseInt($(this).attr("timeout"), 10));
+            } else {
+              $(this).addClass("animated " + $(this).attr("data-animation"));
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
