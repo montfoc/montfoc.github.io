@@ -166,7 +166,7 @@ html {
   /*font-family: "Roboto", "Arial", sans-serif;*/
   font-family: "Courier New", Courier, monospace;
   font-weight: 300;
-  padding-bottom: 1em;
+  padding-bottom: 2.5em;
 }
 
 footer {
@@ -558,7 +558,7 @@ article {
 }
 
 article img {
-  width: 100px;
+  width: 125px;
   float: left;
   margin-right: 1em;
 }
@@ -711,6 +711,18 @@ footer .circle {
   -moz-animation: closeNav 0.5s forwards;
   -o-animation: closeNav 0.5s forwards;
   animation: closeNav 0.5s forwards;
+}
+
+.privacy-policy h2 {
+  margin: 0.5em 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.privacy-policy h3 {
+  margin-top: 0.5em;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 
 @-webkit-keyframes closeNav {
@@ -1278,6 +1290,11 @@ footer .circle {
 }
 
 @media (max-width: 450px) {
+  article img {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
   dl.line dd {
     float: none;
     width: 100%;
